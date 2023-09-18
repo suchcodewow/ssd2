@@ -3,10 +3,26 @@
 @tailwind utilities;
 @layer base {
   h1 {
-    @apply text-4xl font-extrabold font-serif;
+    @apply text-4xl font-extrabold font-serif my-2;
+  }
+  h2 {
+    @apply text-3xl font-extrabold font-serif my-2;
+  }
+  h3 {
+    @apply text-xl font-bold font-serif my-2;
+  }
+  h4 {
+    @apply text-4xl font-extrabold font-serif my-2;
+  }
+  pre {
+    @apply mx-4;
+  }
+  code {
+    @apply font-code;
   }
 }
 
+/* required for dark/light codeblocks */
 @media (prefers-color-scheme: dark) {
   pre[data-theme="light"],
   code[data-theme="light"] {

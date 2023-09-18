@@ -41,12 +41,16 @@ export const Doc = defineDocumentType(() => ({
       type: "string",
       required: true,
     },
+    order: {
+      type: "number",
+      required: false,
+    },
     description: {
       type: "string",
     },
     date: {
       type: "date",
-      required: true,
+      required: false,
     },
   },
   computedFields,

@@ -10,14 +10,17 @@
     "bart": "next build && next start"
   },
   "dependencies": {
+    "@heroicons/react": "^2.0.18",
     "@jsdevtools/rehype-toc": "^3.0.2",
     "@vercel/analytics": "^1.0.2",
     "autoprefixer": "10.4.15",
+    "clsx": "^2.0.0",
     "contentlayer": "^0.3.4",
     "date-fns": "^2.30.0",
     "esbuild": "^0.19.3",
     "eslint": "8.49.0",
     "eslint-config-next": "13.4.19",
+    "heroicons": "^2.0.18",
     "mdx-bundler": "^9.2.1",
     "next": "13.4.19",
     "next-contentlayer": "^0.3.4",

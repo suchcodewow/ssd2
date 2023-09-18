@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 // import { Metadata } from "next";
 import { allPages } from "contentlayer/generated";
 import { Mdx } from "@/components/mdx";
+import Sidebar from "@/components/sidebar";
 
 async function getPageFromParams(params) {
   const slug = params?.slug?.join("/");
@@ -46,12 +47,36 @@ export default async function PagePage({ params }) {
         <h1>{page.title}</h1>
         {page.description && <p className="text-xl">{page.description}</p>}
         <hr />
-        <div className="js-toc-content">
+        <div>
           <Mdx code={page.body.code} />
         </div>
       </article>
       <aside>
-        <Toc />
+        <Sidebar
+          items={[
+            {
+              id: "item1",
+              href: "#",
+              label: "Item 1",
+            },
+            {
+              id: "category1",
+              label: "Category 1",
+              items: [
+                {
+                  id: "category1-1",
+                  label: "Category 1-1",
+                  href: "www.google.com",
+                },
+                {
+                  id: "category1-2",
+                  label: "Category 1-2",
+                  href: "#",
+                },
+              ],
+            },
+          ]}
+        />
       </aside>
     </div>
   );
