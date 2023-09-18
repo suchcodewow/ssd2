@@ -1,31 +1,19 @@
 import Link from "next/link";
-import { compareDesc, format, parseISO } from "date-fns";
-import { allDocs, doc } from "contentlayer/generated";
-
-function PostCard(doc) {
-  return (
-    <div className="mb-8">
-      <h2 className="mb-1 text-xl">
-        <Link href={doc.url} className="text-blue-700 hover:text-blue-900 dark:text-blue-400">
-          {doc.title}
-        </Link>
-      </h2>
-      <time dateTime={doc.date} className="mb-2 block text-xs text-gray-600">
-        {format(parseISO(doc.date), "LLLL d, yyyy")}
-      </time>
-      {/* <div className="text-sm [&>*]:mb-3 [&>*:last-child]:mb-0" dangerouslySetInnerHTML={{ __html: doc.body.html }} /> */}
-    </div>
-  );
-}
+import { allDocs } from "@/.contentlayer/generated";
 
 export default function Home() {
-  const docs = allDocs.sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
+  // const docs = allDocs.sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
 
   return (
-    <div className="mx-auto max-w-xl py-8">
-      <h1 className="mb-8 text-center text-2xl font-black">Next.js + Contentlayer Example</h1>
-      {docs.map((doc, idx) => (
-        <PostCard key={idx} {...doc} />
+    <div className="prose dark:prose-invert">
+      {allDocs.map((doc) => (
+        // <p>{doc}</p>
+        <article key={doc._id}>
+          <Link href={doc.slug}>
+            <h2>{doc.title}</h2>
+          </Link>
+          {doc.description && <p>{doc.description}</p>}
+        </article>
       ))}
     </div>
   );
