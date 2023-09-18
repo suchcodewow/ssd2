@@ -1,6 +1,6 @@
 import Link from "next/link";
 import "./globals.css";
-import { Inter, Open_Sans, Spectral } from "next/font/google";
+import { Open_Sans, Spectral } from "next/font/google";
 import { ThemeProvider } from "@/components/providers";
 import { Analytics } from "@/components/analytics";
 import { ModeToggle } from "@/components/mode-toggle";

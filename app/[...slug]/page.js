@@ -41,11 +41,18 @@ export default async function PagePage({ params }) {
   }
 
   return (
-    <article className="py-6 prose dark:prose-invert">
-      <h1>{page.title}</h1>
-      {page.description && <p className="text-xl">{page.description}</p>}
-      <hr />
-      <Mdx code={page.body.code} />
-    </article>
+    <div>
+      <article className="py-6 prose dark:prose-invert">
+        <h1>{page.title}</h1>
+        {page.description && <p className="text-xl">{page.description}</p>}
+        <hr />
+        <div className="js-toc-content">
+          <Mdx code={page.body.code} />
+        </div>
+      </article>
+      <aside>
+        <Toc />
+      </aside>
+    </div>
   );
 }
