@@ -42,14 +42,7 @@ export const Doc = defineDocumentType(() => ({
       required: true,
     },
     order: {
-      type: "number",
-      required: false,
-    },
-    description: {
       type: "string",
-    },
-    date: {
-      type: "date",
       required: false,
     },
   },
@@ -88,6 +81,7 @@ export default makeSource({
   documentTypes: [Doc, Page],
   mdx: {
     rehypePlugins: [
+      // custom plugin to get code before it's highlighted
       () => (tree) => {
         visit(tree, (node) => {
           if (node?.type === "element" && node?.tagName === "pre") {
@@ -108,6 +102,7 @@ export default makeSource({
           },
         },
       ],
+      //custom plugin to generate light and dark versions of code blocks
       () => (tree) => {
         visit(tree, (node) => {
           if (node?.type === "element" && node?.tagName === "div") {

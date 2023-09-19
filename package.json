@@ -12,6 +12,7 @@
   "dependencies": {
     "@heroicons/react": "^2.0.18",
     "@jsdevtools/rehype-toc": "^3.0.2",
+    "@tailwindcss/typography": "^0.5.10",
     "@vercel/analytics": "^1.0.2",
     "autoprefixer": "10.4.15",
     "clsx": "^2.0.0",

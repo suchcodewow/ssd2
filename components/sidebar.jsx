@@ -10,13 +10,16 @@ import React from "react";
 
 export default function Sidebar({ items }) {
   return (
-    <nav>
-      <ul>
-        {items.map((item) => (
-          <Item key={item.id} item={item} />
-        ))}
-      </ul>
-    </nav>
+    <div>
+      <h1>Table of Contents</h1>
+      <nav>
+        <ul>
+          {items.map((item) => (
+            <Item key={item.id} item={item} />
+          ))}
+        </ul>
+      </nav>
+    </div>
   );
 }
 
