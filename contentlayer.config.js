@@ -1,7 +1,6 @@
 import { defineDocumentType, makeSource } from "contentlayer/source-files";
 import rehypeSlug from "rehype-slug";
 import rehypeToc from "@jsdevtools/rehype-toc";
-import rehypeHighlight from "rehype-highlight";
 import { visit } from "unist-util-visit";
 import rehypePrettyCode from "rehype-pretty-code";
 
@@ -12,21 +11,22 @@ const computedFields = {
   },
   section: {
     type: "string",
-    resolve: (doc) => `/${doc._raw.sourceFileDir.split("/").slice(1).join("/")}`,
-  },
-  sectionHead: {
-    type: "boolean",
     resolve: (doc) => {
       if (doc._raw.sourceFileName == "index.mdx") {
-        return true;
+        let basePath = `_/${doc._raw.sourceFileDir}`;
+        return basePath.substring(0, basePath.lastIndexOf("/"));
       } else {
-        return false;
+        return `_/${doc._raw.sourceFileDir}`;
       }
     },
   },
-  sectionLevel: {
+  parentOf: {
     type: "string",
-    resolve: (doc) => doc._raw.flattenedPath.split("/").length - 1,
+    resolve: (doc) => {
+      if (doc._raw.sourceFileName == "index.mdx") {
+        return `_/${doc._raw.sourceFileDir}`;
+      }
+    },
   },
   slugAsParams: {
     type: "string",
@@ -34,30 +34,13 @@ const computedFields = {
   },
 };
 
-export const Page = defineDocumentType(() => ({
-  name: "Page",
-  filePathPattern: `pages/**/*.mdx`,
+export const staticContent = defineDocumentType(() => ({
+  name: "Content",
+  filePathPattern: `./**/*.mdx`,
   contentType: "mdx",
   fields: {
     title: {
       type: "string",
-      required: true,
-    },
-    description: {
-      type: "string",
-    },
-  },
-  computedFields,
-}));
-
-export const Doc = defineDocumentType(() => ({
-  name: "Doc",
-  filePathPattern: `docs/**/*.mdx`,
-  contentType: "mdx",
-  fields: {
-    title: {
-      type: "string",
-      required: true,
     },
     order: {
       type: "number",
@@ -96,7 +79,7 @@ const customTOC = (toc) => {
 
 export default makeSource({
   contentDirPath: "./content",
-  documentTypes: [Doc, Page],
+  documentTypes: [staticContent],
   mdx: {
     rehypePlugins: [
       // custom plugin to get code before it's highlighted
