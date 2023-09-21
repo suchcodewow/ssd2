@@ -27,7 +27,7 @@ const RenderNav = ({ nodeStart }) => {
 export default function Sidebar() {
   return (
     <div className="w-screen">
-      <RenderNav nodeStart="_" />
+      <RenderNav nodeStart="_/pages" />
       <table className="">
         <thead>
           <tr>
