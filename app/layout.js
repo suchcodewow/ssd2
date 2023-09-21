@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className={`${sans.variable} ${serif.variable} ${code.variable}`}>
       <body className={`antialiased min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-50`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <div className="max-w-2xl mx-auto py-10 px-4">
+          <div className="py-10 px-4">
             <header>
               <div className="flex items-center justify-between">
                 <ModeToggle />

@@ -10,6 +10,24 @@ const computedFields = {
     type: "string",
     resolve: (doc) => `/${doc._raw.flattenedPath}`,
   },
+  section: {
+    type: "string",
+    resolve: (doc) => `/${doc._raw.sourceFileDir.split("/").slice(1).join("/")}`,
+  },
+  sectionHead: {
+    type: "boolean",
+    resolve: (doc) => {
+      if (doc._raw.sourceFileName == "index.mdx") {
+        return true;
+      } else {
+        return false;
+      }
+    },
+  },
+  sectionLevel: {
+    type: "string",
+    resolve: (doc) => doc._raw.flattenedPath.split("/").length - 1,
+  },
   slugAsParams: {
     type: "string",
     resolve: (doc) => doc._raw.flattenedPath.split("/").slice(1).join("/"),
@@ -42,8 +60,8 @@ export const Doc = defineDocumentType(() => ({
       required: true,
     },
     order: {
-      type: "string",
-      required: false,
+      type: "number",
+      default: 0,
     },
   },
   computedFields,
