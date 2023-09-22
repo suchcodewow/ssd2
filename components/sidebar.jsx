@@ -28,7 +28,7 @@ export default function Sidebar() {
   return (
     <div className="w-screen">
       <RenderNav nodeStart="_" />
-      <table className="">
+      <table className="hidden">
         <thead>
           <tr>
             <th>title</th>
