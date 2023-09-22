@@ -5,9 +5,13 @@ import { visit } from "unist-util-visit";
 import rehypePrettyCode from "rehype-pretty-code";
 
 const computedFields = {
-  slug: {
+  // slug: {
+  //   type: "string",
+  //   resolve: (doc) => `/${doc._raw.flattenedPath}`,
+  // },
+  url: {
     type: "string",
-    resolve: (doc) => `/${doc._raw.flattenedPath}`,
+    resolve: (doc) => `/content/${doc._raw.flattenedPath}`,
   },
   section: {
     type: "string",
@@ -36,15 +40,15 @@ const computedFields = {
 
 export const staticContent = defineDocumentType(() => ({
   name: "Content",
-  filePathPattern: `./**/*.mdx`,
+  filePathPattern: `**/*.mdx`,
   contentType: "mdx",
   fields: {
     title: {
       type: "string",
     },
     order: {
-      type: "number",
-      default: 0,
+      type: "string",
+      default: "0",
     },
   },
   computedFields,
@@ -78,7 +82,7 @@ const customTOC = (toc) => {
 };
 
 export default makeSource({
-  contentDirPath: "./content",
+  contentDirPath: "content",
   documentTypes: [staticContent],
   mdx: {
     rehypePlugins: [

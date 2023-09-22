@@ -20,7 +20,7 @@ const components = {
   pre: Pre,
 };
 
-export function Mdx({ code }) {
+export function CustomMdx({ code }) {
   const Component = useMDXComponent(code);
 
   return <Component components={components} />;

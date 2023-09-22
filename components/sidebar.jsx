@@ -10,13 +10,13 @@ const RenderNav = ({ nodeStart }) => {
         .filter((a) => a.section == nodeStart)
         .map((navItem) => {
           return navItem.parentOf ? (
-            <div key={navItem.slug}>
-              <Link href={navItem.slug}>{navItem.title}</Link>
+            <div key={navItem.url}>
+              <Link href={navItem.url}>{navItem.title}</Link>
               <RenderNav nodeStart={navItem.parentOf} />
             </div>
           ) : (
-            <div key={navItem.slug}>
-              <Link href={navItem.slug}>{navItem.title}</Link>
+            <div key={navItem.url}>
+              <Link href={navItem.url}>{navItem.title}</Link>
             </div>
           );
         })}
@@ -27,7 +27,7 @@ const RenderNav = ({ nodeStart }) => {
 export default function Sidebar() {
   return (
     <div className="w-screen">
-      <RenderNav nodeStart="_/pages" />
+      <RenderNav nodeStart="_" />
       <table className="">
         <thead>
           <tr>
