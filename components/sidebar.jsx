@@ -1,6 +1,6 @@
 import { allContents } from "@/.contentlayer/generated";
 import Link from "next/link";
-// console.log(StaticContent);
+
 const docs = allContents.sort((a, b) => a.order - b.order);
 
 const RenderNav = ({ nodeStart }) => {
