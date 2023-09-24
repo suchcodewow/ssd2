@@ -7,7 +7,7 @@ export default function NavLink({ slug, children }) {
   const useSegment = useSelectedLayoutSegments();
 
   const segment = useSegment ? `/${useSegment.join("/")}` : "";
-  console.log("segment:", segment, " slug: ", slug);
+  // console.log("segment:", segment, " slug: ", slug);
   const isActive = slug === segment;
 
   return (
