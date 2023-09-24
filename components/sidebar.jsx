@@ -1,5 +1,5 @@
 import { allContents } from "@/.contentlayer/generated";
-import Link from "next/link";
+import NavLink from "@/context/navcontext";
 
 const docs = allContents.sort((a, b) => a.order - b.order);
 
@@ -11,12 +11,13 @@ const RenderNav = ({ nodeStart }) => {
         .map((navItem) => {
           return navItem.parentOf ? (
             <div key={navItem.url}>
-              <Link href={navItem.url}>{navItem.title}</Link>
+              {/* <Link href={navItem.url}>{navItem.title}</Link> */}
+              <NavLink slug={navItem.url}>{navItem.title}</NavLink>
               <RenderNav nodeStart={navItem.parentOf} />
             </div>
           ) : (
             <div key={navItem.url}>
-              <Link href={navItem.url}>{navItem.title}</Link>
+              <NavLink slug={navItem.url}>{navItem.title}</NavLink>
             </div>
           );
         })}

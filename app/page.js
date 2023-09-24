@@ -45,7 +45,7 @@ export default function Home() {
 
   return (
     <div className="prose dark:prose-invert w-screen">
-      <Sidebar />
+      {/* <Sidebar /> */}
       {/* <p>EOL</p> */}
       {/* <ul className="ml-2">
         <li>item1</li>

@@ -10,6 +10,7 @@
     "bart": "next build && next start"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18",
     "@jsdevtools/rehype-toc": "^3.0.2",
     "@tailwindcss/typography": "^0.5.10",

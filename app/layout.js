@@ -4,6 +4,7 @@ import { Open_Sans, Spectral, Source_Code_Pro } from "next/font/google";
 import { ThemeProvider } from "@/components/providers";
 import { Analytics } from "@/components/analytics";
 import { ModeToggle } from "@/components/mode-toggle";
+import Sidebar from "@/components/sidebar";
 
 const sans = Open_Sans({ subsets: ["latin"], variable: "--font-sans" });
 const serif = Spectral({ weight: ["400", "700"], subsets: ["latin"], variable: "--font-serif" });
@@ -29,9 +30,10 @@ export default function RootLayout({ children }) {
                 </nav>
               </div>
             </header>
+            <Sidebar />
             <main>{children}</main>
           </div>
-          <Analytics />
+          {/* <Analytics /> */}
         </ThemeProvider>
       </body>
     </html>

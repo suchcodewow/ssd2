@@ -5,10 +5,6 @@ import { visit } from "unist-util-visit";
 import rehypePrettyCode from "rehype-pretty-code";
 
 const computedFields = {
-  // slug: {
-  //   type: "string",
-  //   resolve: (doc) => `/${doc._raw.flattenedPath}`,
-  // },
   url: {
     type: "string",
     resolve: (doc) => `/content/${doc._raw.flattenedPath}`,
