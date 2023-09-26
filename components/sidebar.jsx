@@ -9,17 +9,7 @@ const RenderNav = ({ nodeStart }) => {
       {docs
         .filter((a) => a.section == nodeStart)
         .map((navItem) => {
-          return navItem.parentOf ? (
-            <div key={navItem.url}>
-              {/* <Link href={navItem.url}>{navItem.title}</Link> */}
-              <NavLink slug={navItem.url}>{navItem.title}</NavLink>
-              <RenderNav nodeStart={navItem.parentOf} />
-            </div>
-          ) : (
-            <div key={navItem.url}>
-              <NavLink slug={navItem.url}>{navItem.title}</NavLink>
-            </div>
-          );
+          return [<NavLink navItem={navItem} />, navItem.parentOf && <RenderNav nodeStart={navItem.parentOf} />];
         })}
     </div>
   );
