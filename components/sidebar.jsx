@@ -1,24 +1,13 @@
 import { allContents } from "@/.contentlayer/generated";
-import NavLink from "@/context/navcontext";
+import { SideNav } from "./hui";
+import { RenderNav } from "./hui";
 
 const docs = allContents.sort((a, b) => a.order - b.order);
-
-const RenderNav = ({ nodeStart }) => {
-  return (
-    <div className="ml-3">
-      {docs
-        .filter((a) => a.section == nodeStart)
-        .map((navItem) => {
-          return [<NavLink navItem={navItem} />, navItem.parentOf && <RenderNav nodeStart={navItem.parentOf} />];
-        })}
-    </div>
-  );
-};
 
 export default function Sidebar() {
   return (
     <div className="w-screen">
-      <RenderNav nodeStart="_" />
+      <RenderNav nodeStart="_/docs/workshops-0/details-4" />
       <table className="hidden">
         <thead>
           <tr>

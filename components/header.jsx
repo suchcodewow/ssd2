@@ -11,6 +11,7 @@ export default async function () {
             Home
           </Link>
           <Link href="/content">Content</Link>
+          <Link href="/testing">Testing</Link>
         </nav>
       </div>
     </header>
