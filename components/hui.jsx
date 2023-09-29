@@ -7,18 +7,6 @@ import { ChevronRightIcon } from "@heroicons/react/20/solid";
 
 const docs = allContents.sort((a, b) => a.order - b.order);
 
-// export const RenderNav = ({ nodeStart }) => {
-//   return (
-//     <div className="ml-3">
-//       {docs
-//         .filter((a) => a.section == nodeStart)
-//         .map((navItem) => {
-//           return [<NavLink navItem={navItem} />, navItem.parentOf && <RenderNav nodeStart={navItem.parentOf} />];
-//         })}
-//     </div>
-//   );
-// };
-
 export const RenderNav = ({ nodeStart }) => {
   return (
     <div className="mx-auto w-full max-w-md  bg-white dark:bg-slate-800 ml-2">

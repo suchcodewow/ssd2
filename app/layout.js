@@ -2,9 +2,6 @@ import Link from "next/link";
 import "./globals.css";
 import { Open_Sans, Spectral, Source_Code_Pro } from "next/font/google";
 import { ThemeProvider } from "@/components/providers";
-import { Analytics } from "@/components/analytics";
-import { ModeToggle } from "@/components/mode-toggle";
-import { CoreContextProvider } from "@/context/corecontext";
 import Header from "@/components/header";
 
 const sans = Open_Sans({ subsets: ["latin"], variable: "--font-sans" });

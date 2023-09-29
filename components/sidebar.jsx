@@ -4,10 +4,10 @@ import { RenderNav } from "./hui";
 
 const docs = allContents.sort((a, b) => a.order - b.order);
 
-export default function Sidebar() {
+export default function Sidebar({ nodeStart }) {
   return (
     <div className="w-screen">
-      <RenderNav nodeStart="_/docs/workshops-0/details-4" />
+      <RenderNav nodeStart={nodeStart ? nodeStart : "_"} />
       <table className="hidden">
         <thead>
           <tr>
