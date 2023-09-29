@@ -7,8 +7,8 @@ const docs = allContents.sort((a, b) => a.order - b.order);
 export default function Sidebar({ nodeStart }) {
   return (
     <div className="w-screen">
-      <RenderNav nodeStart={nodeStart ? nodeStart : "_"} />
-      <table className="hidden">
+      <RenderNav nodeStart={nodeStart ? nodeStart : "_/"} />
+      <table className="">
         <thead>
           <tr>
             <th>title</th>

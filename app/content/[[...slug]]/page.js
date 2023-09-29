@@ -8,6 +8,7 @@ export function generateStaticParams() {
 export const generateMetadata = ({ params }) => {
   const urlSlug = params.slug ? `${params.slug.join("/")}` : "";
   const content = allContents.find((item) => item._raw.flattenedPath === urlSlug);
+
   return { title: "SCW: " + content.title };
 };
 

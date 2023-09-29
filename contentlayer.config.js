@@ -43,8 +43,8 @@ export const staticContent = defineDocumentType(() => ({
       type: "string",
     },
     order: {
-      type: "string",
-      default: "0",
+      type: "number",
+      default: 0,
     },
   },
   computedFields,
