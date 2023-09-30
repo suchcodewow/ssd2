@@ -21,9 +21,7 @@ export default function RootLayout({ children }) {
         <ClientContextProvider>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <Header />
-            <div className="py-10 px-4">
-              <main>{children}</main>
-            </div>
+            {children}
           </ThemeProvider>
         </ClientContextProvider>
       </body>
