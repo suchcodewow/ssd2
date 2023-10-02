@@ -3,7 +3,6 @@
 import { Fragment, useState } from "react";
 import { Dialog, Popover, Tab, Transition } from "@headlessui/react";
 import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import { ModeToggle } from "./mode-toggle";
 
 const navigation = {
   categories: [
@@ -136,9 +135,25 @@ export default function () {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="border-b h-16 border-gray-200">
-      <ModeToggle />
-      <div>HEADER</div>
+    <div className="flex-1 flex mx-4">
+      <Popover className="relative border">
+        <Popover.Button>Your Mom</Popover.Button>
+        {/* <Popover.Overlay className="fixed inset-0 bg-black opacity-30" /> */}
+        <Transition
+          enter="transition duration-100 ease-out"
+          enterFrom="transform scale-95 opacity-0"
+          enterTo="transform scale-100 opacity-100"
+          leave="transition duration-75 ease-out"
+          leaveFrom="transform scale-100 opacity-100"
+          leaveTo="transform scale-95 opacity-0"
+        >
+          <Popover.Panel className="absolute z-10 bg-white shadow-md">
+            <div className="grid grid-cols2 m-4">
+              <p>first item</p>
+            </div>
+          </Popover.Panel>
+        </Transition>
+      </Popover>
     </div>
   );
 }

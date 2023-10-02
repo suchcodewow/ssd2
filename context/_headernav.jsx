@@ -1,9 +1,10 @@
 "use client";
+// Using this page for now as a reference for tailwind styling
 
 import { Fragment, useState } from "react";
 import { Dialog, Popover, Tab, Transition } from "@headlessui/react";
 import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import { ModeToggle } from "./mode-toggle";
+import { ModeToggle } from "./_mode-toggle.";
 
 const navigation = {
   categories: [

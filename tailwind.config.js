@@ -1,5 +1,4 @@
 /** @type {import('tailwindcss').Config} */
-const { default: daisyui } = require("daisyui");
 const plugin = require("tailwindcss/plugin");
 module.exports = {
   content: [
@@ -19,7 +18,7 @@ module.exports = {
   },
   plugins: [
     require("@tailwindcss/typography"),
-    require("daisyui"),
+
     // plugin(function ({ addBase }) {
     //   addBase({ html: { fontSize: "1.1rem" } });
     // }),
