@@ -4,7 +4,7 @@ import Sidebar from "@/components/sidebar";
 
 export default function Home() {
   return (
-    <div>
+    <div className="px-8 py-3">
       <p>Home Page</p>
     </div>
   );
