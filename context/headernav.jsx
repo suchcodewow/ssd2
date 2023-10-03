@@ -13,12 +13,13 @@ import {
 } from "@heroicons/react/24/outline";
 
 const solutions = [
-  { name: "Dynabank", description: "Main content page", href: "docs/workshops/dynabank", icon: ChartPieIcon },
-  { name: "Engagement", description: "Speak directly to your customers", href: "#", icon: CursorArrowRaysIcon },
+  { name: "Dynabank", description: "Main content page", href: "/content/docs/workshops/dynabank", icon: ChartPieIcon },
+  { name: "Helpers", description: "Generic Helpers", href: "/content/docs/helpers", icon: CursorArrowRaysIcon },
   { name: "Security", description: "Your customers' data will be safe and secure", href: "#", icon: FingerPrintIcon },
   { name: "Integrations", description: "Connect with third-party tools", href: "#", icon: SquaresPlusIcon },
   { name: "Automations", description: "Build strategic funnels that will convert", href: "#", icon: ArrowPathIcon },
 ];
+
 const callsToAction = [
   { name: "Watch demo", href: "#", icon: PlayCircleIcon },
   { name: "Contact sales", href: "#", icon: PhoneIcon },
@@ -28,6 +29,9 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
+async function itemNav(item) {
+  console.log("item", item.href);
+}
 export default function () {
   const [open, setOpen] = useState(false);
 
@@ -55,11 +59,11 @@ export default function () {
                   <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
                     <item.icon className="h-6 w-6 text-gray-600 group-hover:text-indigo-600" aria-hidden="true" />
                   </div>
-                  <div>
-                    <a href={item.href} className="font-semibold text-gray-900">
-                      {item.name}
-                      <span className="absolute inset-0" />
-                    </a>
+                  <div onClick={() => itemNav(item)}>
+                    {/* <a href={item.href} className="font-semibold text-gray-900"> */}
+                    {item.name}
+                    {/* <span className="absolute inset-0" />
+                    </a> */}
                     <p className="mt-1 text-gray-600">{item.description}</p>
                   </div>
                 </div>

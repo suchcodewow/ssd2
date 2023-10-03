@@ -1,15 +1,23 @@
 "use client";
 import { Disclosure } from "@headlessui/react";
-
+import { useContext } from "react";
+import { ClientContext } from "./clientcontext";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { allContents } from "@/.contentlayer/generated";
 import { ChevronRightIcon } from "@heroicons/react/20/solid";
 
 const docs = allContents.sort((a, b) => a.order - b.order);
 
 export const RenderNav = ({ nodeStart }) => {
+  const { baseUrl, generateNav } = useContext(ClientContext);
+  if (generateNav) {
+    console.log("generate: ", usePathname);
+  }
   return (
     <div className="mx-auto w-full max-w-md  bg-white dark:bg-slate-800 ml-2">
+      <h3>{baseUrl}</h3>
+      <h3>{generateNav ? "true" : "false"}</h3>
       {docs
         .filter((a) => a.section == nodeStart)
         .map((navItem) => {
