@@ -1,8 +1,5 @@
-"use client";
-
-import { Fragment, useState } from "react";
-import { Dialog, Popover, Tab, Transition } from "@headlessui/react";
-import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Fragment } from "react";
+import { Popover, Transition } from "@headlessui/react";
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from "@heroicons/react/20/solid";
 import {
   ArrowPathIcon,
@@ -13,7 +10,7 @@ import {
 } from "@heroicons/react/24/outline";
 
 const solutions = [
-  { name: "Dynabank", description: "Main content page", href: "docs/workshops/dynabank", icon: ChartPieIcon },
+  { name: "Analytics", description: "Get a better understanding of your traffic", href: "#", icon: ChartPieIcon },
   { name: "Engagement", description: "Speak directly to your customers", href: "#", icon: CursorArrowRaysIcon },
   { name: "Security", description: "Your customers' data will be safe and secure", href: "#", icon: FingerPrintIcon },
   { name: "Integrations", description: "Connect with third-party tools", href: "#", icon: SquaresPlusIcon },
@@ -24,13 +21,7 @@ const callsToAction = [
   { name: "Contact sales", href: "#", icon: PhoneIcon },
 ];
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
-
-export default function () {
-  const [open, setOpen] = useState(false);
-
+export default function Example() {
   return (
     <Popover className="relative">
       <Popover.Button className="inline-flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">

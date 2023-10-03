@@ -13,7 +13,7 @@ export function ModeToggle() {
 
   return (
     <div
-      className="rounded-full bg-slate-200 dark:bg-slate-700 border flex flex-none border-slate-900 dark:border-slate-50"
+      className="rounded-full bg-white dark:bg-slate-700 border flex flex-none border-slate-200  dark:border-slate-600"
       onClick={() => setTheme(theme === "light" ? "dark" : "light")}
     >
       <button className={clsx("p-[1px] my-1 ml-1 w-6 h-6 rounded-full", mounted && theme === "light" && "bg-gray-300")}>
