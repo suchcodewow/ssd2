@@ -4,7 +4,7 @@ import Sidebar from "@/components/sidebar";
 export default async function Layout({ children }) {
   return (
     <div className="flex">
-      <Sidebar nodeStart="_/docs/workshops/dynabank" />
+      <Sidebar nodeStart="/content" />
       {children}
     </div>
   );

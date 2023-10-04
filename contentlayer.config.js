@@ -13,10 +13,10 @@ const computedFields = {
     type: "string",
     resolve: (doc) => {
       if (doc._raw.sourceFileName == "index.mdx") {
-        let basePath = `_/${doc._raw.sourceFileDir}`;
+        let basePath = `/content/${doc._raw.sourceFileDir}`;
         return basePath.substring(0, basePath.lastIndexOf("/"));
       } else {
-        return `_/${doc._raw.sourceFileDir}`;
+        return `/content/${doc._raw.sourceFileDir}`;
       }
     },
   },
@@ -24,7 +24,7 @@ const computedFields = {
     type: "string",
     resolve: (doc) => {
       if (doc._raw.sourceFileName == "index.mdx") {
-        return `_/${doc._raw.sourceFileDir}`;
+        return `/content/${doc._raw.sourceFileDir}`;
       }
     },
   },

@@ -3,12 +3,18 @@ import { RenderNav } from "../context/sidenav";
 
 // keep until confident we don't need to render contextlayer to a visible table
 const docs = allContents.sort((a, b) => a.order - b.order);
+const structure = docs.map((a) => ({
+  title: a.title,
+  parentOf: a.parentOf,
+  url: a.url,
+  section: a.section,
+}));
 
-export default function Sidebar({ nodeStart }) {
+export default function Sidebar() {
   return (
     <div className="w-screen">
-      <RenderNav nodeStart={nodeStart ? nodeStart : "_/"} />
-      <table className="hidden">
+      <RenderNav structure={structure} docs={docs} />
+      <table className="">
         <thead>
           <tr>
             <th>title</th>

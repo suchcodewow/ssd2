@@ -1,6 +1,7 @@
 "use client";
 
-import { Fragment, useState } from "react";
+import { Fragment, useState, useContext } from "react";
+import { ClientContext } from "./clientcontext";
 import { Dialog, Popover, Tab, Transition } from "@headlessui/react";
 import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from "@heroicons/react/20/solid";
@@ -11,6 +12,7 @@ import {
   FingerPrintIcon,
   SquaresPlusIcon,
 } from "@heroicons/react/24/outline";
+import Link from "next/link";
 
 const solutions = [
   { name: "Dynabank", description: "Main content page", href: "/content/docs/workshops/dynabank", icon: ChartPieIcon },
@@ -34,6 +36,7 @@ async function itemNav(item) {
 }
 export default function () {
   const [open, setOpen] = useState(false);
+  const { setBaseUrl, setGenerateNav } = useContext(ClientContext);
 
   return (
     <Popover className="relative">
@@ -59,13 +62,15 @@ export default function () {
                   <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
                     <item.icon className="h-6 w-6 text-gray-600 group-hover:text-indigo-600" aria-hidden="true" />
                   </div>
-                  <div onClick={() => itemNav(item)}>
-                    {/* <a href={item.href} className="font-semibold text-gray-900"> */}
-                    {item.name}
-                    {/* <span className="absolute inset-0" />
+                  <Link href={item.href}>
+                    <div>
+                      {/* <a href={item.href} className="font-semibold text-gray-900"> */}
+                      {item.name}
+                      {/* <span className="absolute inset-0" />
                     </a> */}
-                    <p className="mt-1 text-gray-600">{item.description}</p>
-                  </div>
+                      <p className="mt-1 text-gray-600">{item.description}</p>
+                    </div>
+                  </Link>
                 </div>
               ))}
             </div>
