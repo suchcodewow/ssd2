@@ -1,3 +1,7 @@
 export default function Footer() {
-  return <div className="text-center p-16">Footer, dog.</div>;
+  return (
+    <div className="flex-none flex justify-center p-6 bg-gray-100 dark:bg-gray-800">
+      <div>Copyright SuchCodeWow 2023</div>
+    </div>
+  );
 }

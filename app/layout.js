@@ -18,15 +18,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${sans.variable} ${serif.variable} ${code.variable}`}>
-      <body className="subpixel-antialiased  bg-white dark:bg-slate-900 text-slate-900 dark:text-white">
+      <body className=" bg-white dark:bg-slate-900 text-slate-900 dark:text-white">
         <ClientContextProvider>
-          <ThemeProvider>
-            <div className="h-16 px-5 flex justify-between items-center  border-b dark:border-b-0 dark:bg-slate-800 ">
-              <Header />
-            </div>
-            <div>{children}</div>
-            <Footer />
-          </ThemeProvider>
+          <ThemeProvider>{children}</ThemeProvider>
         </ClientContextProvider>
       </body>
     </html>
