@@ -3,6 +3,7 @@ import rehypeSlug from "rehype-slug";
 import rehypeToc from "@jsdevtools/rehype-toc";
 import { visit } from "unist-util-visit";
 import rehypePrettyCode from "rehype-pretty-code";
+import remark from "./components/remark";
 
 const computedFields = {
   url: {
@@ -82,7 +83,7 @@ export default makeSource({
   documentTypes: [staticContent],
   mdx: {
     rehypePlugins: [
-      // custom plugin to get code before it's highlighted
+      // custom plugin to get code before it's highlighted for the copy/paste button
       () => (tree) => {
         visit(tree, (node) => {
           if (node?.type === "element" && node?.tagName === "pre") {
@@ -95,6 +96,7 @@ export default makeSource({
         });
       },
       [
+        // plugin to generate code blocks based on Shiki highlighter
         rehypePrettyCode,
         {
           theme: {
@@ -103,7 +105,7 @@ export default makeSource({
           },
         },
       ],
-      //custom plugin to generate light and dark versions of code blocks
+      //custom plugin to generate light and dark versions of code blocks - using CSS to hide unused one
       () => (tree) => {
         visit(tree, (node) => {
           if (node?.type === "element" && node?.tagName === "div") {
