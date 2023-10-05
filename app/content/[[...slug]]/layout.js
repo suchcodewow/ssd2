@@ -4,8 +4,10 @@ import Sidebar from "@/components/sidebar";
 export default async function Layout({ children }) {
   return (
     <div className="flex">
-      <Sidebar nodeStart="/content" />
-      {children}
+      <div className="py-6 px-5 border-r">
+        <Sidebar />
+      </div>
+      <div className="py-6 px-8">{children}</div>
     </div>
   );
 }

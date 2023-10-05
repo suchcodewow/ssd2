@@ -17,7 +17,7 @@ const ContentLayout = ({ params }) => {
   const content = allContents.find((item) => item._raw.flattenedPath === urlSlug);
   return (
     <div>
-      <article className="py-8 mx-auto max-w-xl">
+      <article>
         <div className="mb-8 text-center">
           <h1>{content.title}</h1>
         </div>

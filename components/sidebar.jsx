@@ -12,9 +12,9 @@ const structure = docs.map((a) => ({
 
 export default function Sidebar() {
   return (
-    <div className="w-screen">
+    <div>
       <RenderNav structure={structure} docs={docs} />
-      <table className="">
+      <table className="hidden">
         <thead>
           <tr>
             <th>title</th>

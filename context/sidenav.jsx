@@ -21,7 +21,7 @@ export const RenderNav = ({ structure }) => {
   // console.log("backto", sideBackTo);
   // const navBase = uriStructureData.parentOf ? uriStructureData.parentOf : uriStructureData.section;
   return (
-    <div>
+    <div className="w-56 flex-none">
       {sideBackTo && (
         <div>
           backto: <Link href={sideBackTo.url}>{sideBackTo.title}</Link>

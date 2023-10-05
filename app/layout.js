@@ -4,6 +4,7 @@ import { Open_Sans, Spectral, Source_Code_Pro } from "next/font/google";
 import { ThemeProvider } from "@/components/providers";
 import ClientContextProvider from "@/context/clientcontext";
 import Header from "@/components/header";
+import Footer from "@/components/footer";
 
 const sans = Open_Sans({ subsets: ["latin"], variable: "--font-sans" });
 const serif = Spectral({ weight: ["400", "700"], subsets: ["latin"], variable: "--font-serif" });
@@ -17,13 +18,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${sans.variable} ${serif.variable} ${code.variable}`}>
-      <body className={`antialiased min-h-screen bg-white dark:bg-slate-900 text-slate-900 dark:text-white`}>
+      <body className="subpixel-antialiased  bg-white dark:bg-slate-900 text-slate-900 dark:text-white">
         <ClientContextProvider>
           <ThemeProvider>
-            <div className="flex-col">
+            <div className="h-16 px-5 flex justify-between items-center  border-b dark:border-b-0 dark:bg-slate-800 ">
               <Header />
-              {children}
             </div>
+            <div>{children}</div>
+            <Footer />
           </ThemeProvider>
         </ClientContextProvider>
       </body>
