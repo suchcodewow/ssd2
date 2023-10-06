@@ -95,7 +95,20 @@ export default makeSource({
       () => (tree) => {
         visit(tree, "paragraph", (node) => {
           if (node.children[0].value?.startsWith(":::")) {
-            console.log(node);
+            const content = node.children[0].value.split("\n");
+            const calloutType = content[0].substring(3);
+            if (calloutType.startsWith("tip")) {
+              const userSummary = calloutType.substring(3).trim();
+              const summary = userSummary.length > 0 ? userSummary : "TIP";
+              // const finalString = `<details><summary>${summary}</summary>${content.slice(1).join("\n")}</details>`;
+              const finalString = `<div>`;
+              console.log(node);
+              // node.type = "html";
+              // node.children = undefined;
+              // node.value = finalString;
+
+              // console.log(finalString);
+            }
           }
         });
       },
@@ -106,9 +119,7 @@ export default makeSource({
         visit(tree, "paragraph", (node) => {
           if (node?.type === "element" && node?.tagName === "pre") {
             const [codeEl] = node.children;
-
             if (codeEl.tagName !== "code") return;
-
             node.raw = codeEl.children?.[0].value;
           }
         });
@@ -130,9 +141,9 @@ export default makeSource({
             if (!("data-rehype-pretty-code-fragment" in node.properties)) {
               return;
             }
-
             for (const child of node.children) {
               if (child.tagName === "pre") {
+                console.log(child);
                 child.properties["raw"] = node.raw;
               }
             }
