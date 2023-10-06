@@ -3,7 +3,8 @@ import rehypeSlug from "rehype-slug";
 import rehypeToc from "@jsdevtools/rehype-toc";
 import { visit } from "unist-util-visit";
 import rehypePrettyCode from "rehype-pretty-code";
-import remark from "./components/remark";
+import { remarkCustom } from "./components/remark";
+import { toString } from "./components/remark";
 
 const computedFields = {
   url: {
@@ -82,10 +83,27 @@ export default makeSource({
   contentDirPath: "content",
   documentTypes: [staticContent],
   mdx: {
+    remarkPlugins: [
+      // () => (tree) => {
+      //   visit(tree, "heading", (node) => {
+      //     // if (node.depth !== 1) return;
+      //     let text = toString(node) + "HI MOM";
+      //     node.children[0].value = text;
+      //     console.log(node);
+      //   });
+      // },
+      () => (tree) => {
+        visit(tree, "paragraph", (node) => {
+          if (node.children[0].value?.startsWith(":::")) {
+            console.log(node);
+          }
+        });
+      },
+    ],
     rehypePlugins: [
       // custom plugin to get code before it's highlighted for the copy/paste button
       () => (tree) => {
-        visit(tree, (node) => {
+        visit(tree, "paragraph", (node) => {
           if (node?.type === "element" && node?.tagName === "pre") {
             const [codeEl] = node.children;
 

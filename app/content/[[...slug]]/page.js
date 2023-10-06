@@ -32,7 +32,7 @@ const ContentLayout = ({ params }) => {
           {/* div to use all horizontal space */}
           <div className="bg-gray-200 dark:bg-gray-700 w-full flex flex-row justify-center">
             {/* give article limited max size and padding */}
-            <article className="prose dark:prose-invert my-2 mx-2 rounded-lg py-16 px-16 max-w-5xl bg-white dark:bg-slate-900">
+            <article className="flex-1 prose dark:prose-invert my-2 mx-2 rounded-lg py-16 px-16 max-w-5xl bg-white dark:bg-slate-900">
               <div className="mb-8 text-center">
                 <h1>{content.title}</h1>
               </div>
