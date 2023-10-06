@@ -92,32 +92,45 @@ export default makeSource({
       //     console.log(node);
       //   });
       // },
+      // () => (tree) => {
+      //   visit(tree, "paragraph", (node) => {
+      //     if (node.children[0].value?.startsWith(":::")) {
+      //       // if (node.type == "html") {
+      //       const content = node.children[0].value.split("\n");
+      //       const calloutType = content[0].substring(3);
+      //       if (calloutType.startsWith("tip")) {
+      //         const userSummary = calloutType.substring(3).trim();
+      //         const summary = userSummary.length > 0 ? userSummary : "TIP";
+      //         const finalString = `<details><summary>${summary}</summary>${content.slice(1).join("\n")}</details>`;
+      //         const finalString = `<div>`;
+      //         console.log(node);
+      //         node.type = "html";
+      //         node.children = undefined;
+      //         node.value = finalString;
+      //         console.log(node);
+      //       }
+      //     }
+      //   });
+      // },
       () => (tree) => {
-        visit(tree, "paragraph", (node) => {
-          if (node.children[0].value?.startsWith(":::")) {
-            const content = node.children[0].value.split("\n");
-            const calloutType = content[0].substring(3);
-            if (calloutType.startsWith("tip")) {
-              const userSummary = calloutType.substring(3).trim();
-              const summary = userSummary.length > 0 ? userSummary : "TIP";
-              // const finalString = `<details><summary>${summary}</summary>${content.slice(1).join("\n")}</details>`;
-              const finalString = `<div>`;
-              console.log(node);
-              // node.type = "html";
-              // node.children = undefined;
-              // node.value = finalString;
-
-              // console.log(finalString);
-            }
+        visit(tree, (node) => {
+          if (node.type == "html") {
+            // console.log(node);
           }
         });
       },
     ],
     rehypePlugins: [
+      () => (tree) => {
+        visit(tree, (node) => {
+          console.log(node);
+        });
+      },
       // custom plugin to get code before it's highlighted for the copy/paste button
       () => (tree) => {
         visit(tree, "paragraph", (node) => {
           if (node?.type === "element" && node?.tagName === "pre") {
+            // console.log(node);
             const [codeEl] = node.children;
             if (codeEl.tagName !== "code") return;
             node.raw = codeEl.children?.[0].value;
@@ -143,7 +156,6 @@ export default makeSource({
             }
             for (const child of node.children) {
               if (child.tagName === "pre") {
-                console.log(child);
                 child.properties["raw"] = node.raw;
               }
             }

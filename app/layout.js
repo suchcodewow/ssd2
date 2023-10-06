@@ -18,7 +18,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${sans.variable} ${serif.variable} ${code.variable}`}>
-      <body className=" bg-white dark:bg-slate-900 text-slate-900 dark:text-white">
+      <body suppressHydrationWarning={true} className=" bg-white dark:bg-slate-900 text-slate-900 dark:text-white">
         <ClientContextProvider>
           <ThemeProvider>{children}</ThemeProvider>
         </ClientContextProvider>
