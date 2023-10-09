@@ -3,6 +3,7 @@ import rehypeSlug from "rehype-slug";
 import rehypeToc from "@jsdevtools/rehype-toc";
 import { visit } from "unist-util-visit";
 import rehypePrettyCode from "rehype-pretty-code";
+
 import { remarkCustom } from "./components/remark";
 import { toString } from "./components/remark";
 
@@ -112,20 +113,20 @@ export default makeSource({
       //     }
       //   });
       // },
-      () => (tree) => {
-        visit(tree, (node) => {
-          if (node.type == "html") {
-            // console.log(node);
-          }
-        });
-      },
+      // () => (tree) => {
+      //   visit(tree, (node) => {
+      //     if (node.type == "html") {
+      //       // console.log(node);
+      //     }
+      //   });
+      // },
     ],
     rehypePlugins: [
-      () => (tree) => {
-        visit(tree, (node) => {
-          console.log(node);
-        });
-      },
+      // () => (tree) => {
+      //   visit(tree, (node) => {
+      //     console.log(node);
+      //   });
+      // },
       // custom plugin to get code before it's highlighted for the copy/paste button
       () => (tree) => {
         visit(tree, "paragraph", (node) => {
